@@ -1,8 +1,18 @@
 export const quizzes = [
+  // --- Basic (401-430) ---
+  { id: 401, category: "기초:첫걸음", type: "multiple", question: "화면에 글자를 출력할 때 사용하는 명령어는?", choices: ["print()", "console.log()", "write()", "alert()"], answer: 1, explanation: "console.log()는 개발자 도구의 콘솔 창에 메시지를 출력하는 가장 기본적인 방법입니다." },
+  { id: 402, category: "기초:첫걸음", type: "code", question: "'Hello'를 출력하는 한 줄 코드를 작성하세요.", answer: "console.log('Hello')", explanation: "따옴표로 감싼 문자를 괄호 안에 넣습니다.", test: "return input.includes('console.log') && (input.includes(\"'Hello'\") || input.includes('\"Hello\"'))" },
+  { id: 403, category: "기초:자료형", type: "multiple", question: "숫자 10과 문자 '10'은 자바스크립트에서 같은 종류인가요?", choices: ["네, 같습니다", "아니오, 다릅니다", "상황에 따라 다릅니다", "모르겠습니다"], answer: 1, explanation: "숫자는 연산이 가능하고, 문자는 글자 자체를 의미합니다. 따옴표 유무로 구분합니다." },
+  { id: 404, category: "기초:연산/조건", type: "code", question: "변수 x가 10보 크면 'Big'을 출력하는 if문을 작성하세요.", answer: "if (x > 10) console.log('Big')", explanation: "if (조건) { 실행문 } 형태를 사용합니다.", test: "let x = 11; return input.includes('if') && input.includes('x > 10')" },
   // --- Beginner/Core (1-100) ---
-  { id: 1, category: "ES6", type: "multiple", question: "다음 중 변수 재할당이 불가능한 키워드는?", choices: ["var", "let", "const", "def"], answer: 2, explanation: "const는 상수를 선언할 때 사용하며 선언 후 재할당이 불가능합니다." },
-  { id: 2, category: "ES6", type: "multiple", question: "템플릿 리터럴을 사용할 때 사용하는 기호는?", choices: ["' ' (싱글 쿼트)", "\" \" (더블 쿼트)", "` ` (백틱)", "{ } (중괄호)"], answer: 2, explanation: "백틱(`)을 사용하여 문자열 내 변수를 ${expression} 형태로 삽입할 수 있습니다." },
-  { id: 3, category: "ES6", type: "multiple", question: "화살표 함수(Arrow Function)의 특징 중 틀린 것은?", choices: ["문법이 간결하다", "자신만의 this를 가지지 않는다", "생성자 함수로 사용 가능하다", "익명 함수로 주로 사용된다"], answer: 2, explanation: "화살표 함수는 자신만의 this 바인딩을 가지지 않으며, prototype 프로퍼티가 없어 생성자 함수로 사용할 수 없습니다." },
+  { id: 201, category: "ES5", type: "multiple", question: "자바스크립트의 '엄격 모드'를 활성화하는 문자열은?", choices: ["'mode strict'", "'use strict'", "'strict mode'", "'strict'"], answer: 1, explanation: "파일이나 함수 최상단에 'use strict'; 를 작성하면 더 엄격한 에러 체킹이 활성화됩니다." },
+  { id: 202, category: "ES5", type: "multiple", question: "Strict Mode에서 선언하지 않은 변수에 값을 할당하면?", choices: ["전역 변수가 된다", "에러가 발생한다", "자동으로 var가 붙는다", "경고만 뜬다"], answer: 1, explanation: "엄격 모드에서는 암묵적인 전역 변수 생성을 금지하므로 ReferenceError가 발생합니다." },
+  { id: 203, category: "ES5", type: "code", question: "객체 obj에서 속성 'age'를 읽을 때 1을 더해 반환하는 getter를 작성하세요.", answer: "get age() { return this._age + 1; }", explanation: "get 키워드를 사용하여 접근자 속성을 정의합니다.", test: "const obj = { _age: 10 }; try { Object.defineProperty(obj, 'age', { get: function() { return this._age + 1; } }); return obj.age === 11; } catch(e) { return false; }" },
+  { id: 204, category: "ES5", type: "multiple", question: "Object.defineProperty에서 속성의 열거 가능 여부를 정하는 옵션은?", choices: ["writable", "configurable", "enumerable", "readable"], answer: 2, explanation: "enumerable이 true일 때만 for...in 루프나 Object.keys()에 포함됩니다." },
+  { id: 205, category: "ES5", type: "code", question: "배열인지 확인하는 ES5의 정적 메서드를 호출하세요. (변수명 arr)", answer: "Array.isArray(arr)", explanation: "Array.isArray()는 인자가 배열인지 확인하는 가장 정확한 방법입니다.", test: "const arr = []; return eval(input) === true" },
+  { id: 1, category: "ES6", type: "multiple", question: "다음 중 변수 재할당이 불가능한 키워드는?", choices: ["var", "let", "const", "def"], answer: 2, explanation: "const는 'Constant(상수)'의 약자로, 한 번 선언 및 초기화되면 값을 바꿀 수 없습니다. 이는 코드의 안정성을 높이고 의도치 않은 값 변경을 방지하는 데 도움을 줍니다." },
+  { id: 2, category: "ES6", type: "multiple", question: "템플릿 리터럴을 사용할 때 사용하는 기호는?", choices: ["' ' (싱글 쿼트)", "\" \" (더블 쿼트)", "` ` (백틱)", "{ } (중괄호)"], answer: 2, explanation: "백틱(`)을 사용하면 문자열 내부에 ${변수명} 혹은 ${표현식} 형태로 자바스크립트 코드를 직접 삽입할 수 있어, 문자열 더하기(+) 연산자보다 가독성이 훨씬 뛰어납니다." },
+  { id: 3, category: "ES6", type: "multiple", question: "화살표 함수(Arrow Function)의 특징 중 틀린 것은?", choices: ["문법이 간결하다", "자신만의 this를 가지지 않는다", "생성자 함수로 사용 가능하다", "익명 함수로 주로 사용된다"], answer: 2, explanation: "화살표 함수는 객체의 prototype을 생성하지 않으므로 'new' 키워드와 함께 생성자 함수로 사용할 수 없습니다. 또한 상위 스코프의 this를 그대로 사용하는 Lexical this 특징을 가집니다." },
   { id: 4, category: "ES6", type: "multiple", question: "다음 중 스프레드 연산자(Spread Operator)의 올바른 사용은?", choices: ["const newArr = ...arr;", "const newArr = [arr...];", "const newArr = [...arr];", "const newArr = (arr...);"], answer: 2, explanation: "스프레드 연산자는 배열이나 객체의 요소를 개별 요소로 펼칠 때 사용하며 [...arr] 형식을 취합니다." },
   { id: 5, category: "ES6", type: "multiple", question: "객체 구조 분해 할당(Destructuring)의 올바른 예시는?", choices: ["const {name} = obj;", "const [name] = obj;", "const name = obj{name};", "const {name} : obj;"], answer: 0, explanation: "객체의 프로퍼티를 변수에 할당할 때 중괄호 {}를 사용하여 구조 분해 할당을 수행합니다." },
   { id: 6, category: "ES6", type: "multiple", question: "기본 매개변수(Default Parameter) 설정 방법으로 옳은 것은?", choices: ["function greet(name || 'User') {}", "function greet(name = 'User') {}", "function greet(name : 'User') {}", "function greet(name @ 'User') {}"], answer: 1, explanation: "함수 정의 시 파라미터에 '=' 기호를 사용하여 매개변수가 전달되지 않았을 때의 기본값을 지정할 수 있습니다." },
@@ -106,7 +116,7 @@ export const quizzes = [
   { id: 100, category: "이벤트", type: "multiple", question: "일반 함수 내부의 this는 어디인가?", choices: ["window", "등록 요소", "e.target", "undefined"], answer: 1, explanation: "나 자신(CurrentTarget)입니다." },
 
   // --- Intermediate Curriculum (101-150) ---
-  
+
   // 클로저/스코프 (101-110)
   { id: 101, category: "클로저/스코프", type: "multiple", question: "다음 중 호이스팅(Hoisting) 시 값까지 같이 할당되는 것은?", choices: ["var 변수", "let 변수", "함수 선언문(Declaration)", "함수 표현식(Expression)"], answer: 2, explanation: "함수 선언문은 전체 내용이 최상단으로 끌어올려져 선언 전에도 호출이 가능합니다." },
   { id: 102, category: "클로저/스코프", type: "multiple", question: "외부 함수의 변수를 내부 함수가 계속 참조하는 현상은?", choices: ["Hoisting", "Recursion", "Closure", "Scope Chain"], answer: 2, explanation: "클로저는 함수와 그 함수가 선언된 렉시컬 환경의 조합입니다." },
@@ -165,5 +175,32 @@ export const quizzes = [
   { id: 147, category: "성능/최적화", type: "multiple", question: "DOM 트리가 완성된 시점에 발생하는 이벤트는?", choices: ["load", "DOMContentLoaded", "ready", "mounted"], answer: 1, explanation: "이미지 등 외부 리소스를 기다리지 않고 최우선으로 일어납니다." },
   { id: 148, category: "성능/최적화", type: "code", question: "무거운 연산 결과를 저장해두고 재사용하는 '메모이제이션'용 Map을 선언하세요.", answer: "const cache = new Map();", explanation: "키-값 쌍으로 결과를 저장하기에 가장 적합한 자료구조입니다.", test: "return input.includes('new Map()')" },
   { id: 149, category: "성능/최적화", type: "multiple", question: "강한 참조를 피하여 가비지 컬렉션을 돕는 객체 타입은?", choices: ["Map", "WeakMap", "Set", "WeakObject"], answer: 1, explanation: "키로 사용된 객체에 대한 참조가 사라지면 자동으로 메모리에서 삭제됩니다." },
-  { id: 150, category: "성능/최적화", type: "code", question: "setTimeout(fn, 0)을 사용하는 이유는 무엇인가요? (핵심 키워드)", answer: "태스크 큐로 보내기 위해", explanation: "현재 실행 스택을 비우고 비동기적으로 다음 우선순위로 넘기기 위함입니다.", test: "return input.includes('큐') || input.includes('비동기') || true" }
+  { id: 150, category: "성능/최적화", type: "code", question: "setTimeout(fn, 0)을 사용하는 이유는 무엇인가요? (핵심 키워드)", answer: "태스크 큐로 보내기 위해", explanation: "현재 실행 스택을 비우고 비동기적으로 다음 우선순위로 넘기기 위함입니다.", test: "return input.includes('큐') || input.includes('비동기') || true" },
+
+  // --- Intermediate Expansion (151-180) ---
+
+  // 에러 핸들링
+  { id: 151, category: "에러 핸들링", type: "multiple", question: "에러 발생 여부와 상관없이 무조건 실행되는 블록은?", choices: ["try", "catch", "finally", "throw"], answer: 2, explanation: "finally 블록은 try 내 로직의 성공/실패 여부에 관계없이 리소스 해제 등 마무리 작업을 위해 실행됩니다." },
+  { id: 152, category: "에러 핸들링", type: "code", question: "'Invalid'라는 메시지를 가진 에러 객체를 생성하여 던지는 코드를 작성하세요.", answer: "throw new Error('Invalid')", explanation: "throw 키워드 뒤에 Error 인스턴스를 생성하여 예외를 발생시킵니다.", test: "try { eval(input); return false; } catch(e) { return e.message === 'Invalid'; }" },
+  { id: 153, category: "에러 핸들링", type: "multiple", question: "에러 객체의 속성 중 에러 메시지가 담긴 속성명은?", choices: ["name", "message", "stack", "type"], answer: 1, explanation: "message 속성은 생성자 인자로 전달한 에러의 구체적인 내용을 담고 있습니다." },
+
+  // 모듈
+  { id: 156, category: "모듈", type: "multiple", question: "export default로 내보낸 모듈을 가져올 때 올바른 문법은?", choices: ["import { name } from 'url'", "import name from 'url'", "import * as name from 'url'", "require('url')"], answer: 1, explanation: "default 내보내기는 중괄호 없이 가져오며, 이름도 자유롭게 지정할 수 있습니다." },
+  { id: 157, category: "모듈", type: "code", question: "'math.js' 파에서 pi를 별칭(as) P로 가져오는 코드를 작성하세요.", answer: "import { pi as P } from './math.js'", explanation: "as 키워드를 사용하여 가져온 식별자의 이름을 바꿀 수 있습니다.", test: "return input.includes('pi as P')" },
+
+  // 정규표현식
+  { id: 161, category: "정규표현식", type: "multiple", question: "대소문자를 구분하지 않고 검색하는 정규식 플래그는?", choices: ["g", "m", "i", "s"], answer: 2, explanation: "i (Ignore Case) 플래그를 뒤에 붙여 대소문자 무관 검색을 수행합니다." },
+  { id: 162, category: "정규표현식", type: "code", question: "변수 str에 'apple'이 포함되어 있는지 검사하는 정규식 test 호출을 작성하세요.", answer: "/apple/.test(str)", explanation: "test() 메서드는 패턴 일치 여부를 true/false로 반환합니다.", test: "const str='apple pie'; return eval(input) === true" },
+
+  // 자료구조(Map/Set)
+  { id: 166, category: "자료구조(Map/Set)", type: "multiple", question: "Map이 객체(Object)보다 유리한 점이 아닌 것은?", choices: ["키로 객체를 사용할 수 있다", "요소의 개수를 알기 쉽다", "삽입 순서가 보장된다", "JSON으로 변환하기 쉽다"], answer: 3, explanation: "Map은 직렬화가 번거롭지만, 다양한 타입의 키 사용과 순서 보장 등 성능/기능 면에서 유리합니다." },
+  { id: 167, category: "자료구조(Map/Set)", type: "code", question: "배열 [1, 2, 2, 3]에서 중복을 제거한 새 배열을 Set을 이용해 만드세요.", answer: "[...new Set([1, 2, 2, 3])]", explanation: "Set은 중복을 허용하지 않으며, 이를 다시 Spread 연산자로 배열화하여 중복을 제거합니다.", test: "return eval(input).length === 3" },
+
+  // 이터레이터/제너레이터
+  { id: 171, category: "이터레이터/제너레이터", type: "multiple", question: "제너레이터 함수를 정의할 때 사용하는 기호는?", choices: ["function$", "function*", "function!", "function&"], answer: 1, explanation: "별표(*)를 function 뒤에 붙여 제너레이터임을 명시합니다." },
+  { id: 172, category: "이터레이터/제너레이터", type: "code", question: "제너레이터 내부에서 값을 반환하고 멈추는 키워드를 적으세요.", answer: "yield", explanation: "yield는 값을 산출하고 함수의 실행 상태를 일시 정지시킵니다.", test: "return input === 'yield'" },
+
+  // Proxy/Reflect
+  { id: 176, category: "Proxy/Reflect", type: "multiple", question: "Proxy 생성자의 두 번째 인자로 전달하는 동작 정의 객체는?", choices: ["target", "handler", "receiver", "trap"], answer: 1, explanation: "handler 객체 내부에 get, set 등 '트랩'들을 정의하여 동작을 가로챕니다." },
+  { id: 177, category: "Proxy/Reflect", type: "code", question: "target의 속성을 가로채는 'get' 트랩의 기본 인자 2개를 적으세요. (순서대로)", answer: "target, prop", explanation: "첫 번째는 원본 객체, 두 번째는 접근하려는 속성 이름입니다.", test: "return input.includes('target') && input.includes('prop')" }
 ];

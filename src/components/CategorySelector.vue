@@ -4,16 +4,50 @@ import { useQuizStore } from '../stores/quizStore'
 import { 
   Code2, Hash, Zap, Box, MousePointer2, 
   ChevronRight, GraduationCap, Trophy,
-  Key, Layers, Terminal, Globe, Gauge
+  Key, Layers, Terminal, Globe, Gauge,
+  AlertTriangle, FileCode, Search, Database, RefreshCcw, ShieldCheck
 } from 'lucide-vue-next'
 
 const emit = defineEmits(['select'])
 const store = useQuizStore()
 const mode = ref('study') // study or quiz
-const currentLevel = ref('Beginner')
+const currentLevel = ref('Basic')
 
 const allCategories = [
+  // Basic
+  { 
+    id: '기초:첫걸음', 
+    name: '프로그래밍 기초', 
+    desc: '변수, 콘솔 출력, 코드 주석', 
+    icon: Code2,
+    level: 'Basic',
+    color: 'bg-orange-100 text-orange-600 dark:bg-orange-900/30'
+  },
+  { 
+    id: '기초:자료형', 
+    name: '데이터 타입', 
+    desc: '숫자, 문자, 참/거짓(불리언)', 
+    icon: Hash,
+    level: 'Basic',
+    color: 'bg-sky-100 text-sky-600 dark:bg-sky-900/30'
+  },
+  { 
+    id: '기초:연산/조건', 
+    name: '연산과 조건', 
+    desc: '사칙연산, if 조건문 기초', 
+    icon: Zap,
+    level: 'Basic',
+    color: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30'
+  },
   // Beginner
+  { 
+    id: 'ES5', 
+    name: 'ES5 핵심', 
+    desc: 'Strict Mode, Getter/Setter, defineProperty', 
+    icon: Code2,
+    level: 'Beginner',
+    color: 'bg-slate-100 text-slate-600 dark:bg-slate-900/30'
+  },
   { 
     id: 'ES6', 
     name: 'ES6 문법', 
@@ -41,7 +75,7 @@ const allCategories = [
   { 
     id: 'DOM', 
     name: 'DOM 조작', 
-    desc: '요소 선택, 생성, 스타일 수정', 
+    desc: '요소 선택, 생성, 스타일 수정, DocumentFragment, Reflow', 
     icon: Box,
     level: 'Beginner',
     color: 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30'
@@ -49,7 +83,7 @@ const allCategories = [
   { 
     id: '이벤트', 
     name: '이벤트 모델', 
-    desc: '리스너 등록, 전파 방지, 폼 제어', 
+    desc: '리스너 등록, 전파 방지, 폼 제어, 버블링, 위임', 
     icon: MousePointer2,
     level: 'Beginner',
     color: 'bg-rose-100 text-rose-600 dark:bg-rose-900/30'
@@ -94,6 +128,62 @@ const allCategories = [
     icon: Gauge, 
     level: 'Intermediate',
     color: 'bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-900/30'
+  },
+  { 
+    id: '에러 핸들링', 
+    name: '에러 핸들링', 
+    desc: 'try...catch, 커서 에러, 예외 처리', 
+    icon: AlertTriangle, 
+    level: 'Intermediate',
+    color: 'bg-red-100 text-red-600 dark:bg-red-900/30'
+  },
+  { 
+    id: '모듈', 
+    name: '모듈 시스템', 
+    desc: 'import, export, ESM, Dynamic Import', 
+    icon: FileCode, 
+    level: 'Intermediate',
+    color: 'bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30'
+  },
+  { 
+    id: '정규표현식', 
+    name: '정규표현식', 
+    desc: '텍스트 패턴 검색, 플래그, 메타 문자', 
+    icon: Search, 
+    level: 'Intermediate',
+    color: 'bg-blue-100 text-blue-600 dark:bg-blue-900/30'
+  },
+  { 
+    id: '자료구조(Map/Set)', 
+    name: 'Map & Set', 
+    desc: '키-값 상, 중복 제거, WeakMap/Set', 
+    icon: Database, 
+    level: 'Intermediate',
+    color: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30'
+  },
+  { 
+    id: '이터레이터/제너레이터', 
+    name: '순회와 제너레이터', 
+    desc: 'Iterable, Generator, yield, 순회 제어', 
+    icon: RefreshCcw, 
+    level: 'Intermediate',
+    color: 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30'
+  },
+  { 
+    id: 'Proxy/Reflect', 
+    name: 'Proxy & Reflect', 
+    desc: '트랩, 메타 프로그래밍, 동작 가로채기', 
+    icon: ShieldCheck, 
+    level: 'Intermediate',
+    color: 'bg-slate-100 text-slate-600 dark:bg-slate-900/30'
+  },
+  { 
+    id: '엔진/아키텍처', 
+    name: '엔진 원리', 
+    desc: 'V8, 콜 스택, 힙, 가비지 컬렉션', 
+    icon: ShieldCheck, 
+    level: 'Intermediate',
+    color: 'bg-gray-100 text-gray-600 dark:bg-gray-900/30'
   }
 ]
 
@@ -140,7 +230,7 @@ const getStatus = (catId) => {
       <!-- Level Switcher -->
       <div class="flex items-center gap-1 p-1 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200/50 dark:border-slate-800 w-full max-w-sm">
         <button 
-          v-for="level in ['Beginner', 'Intermediate']" 
+          v-for="level in ['Basic', 'Beginner', 'Intermediate']" 
           :key="level"
           @click="currentLevel = level"
           :class="[
